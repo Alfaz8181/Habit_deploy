@@ -295,3 +295,18 @@ body.dark {
   .sidebar { display: none; }
   .mini-stats { grid-template-columns: 1fr; }
 }
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-muted);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
