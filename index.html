@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HabitPro | Professional Dashboard</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <span>HabitPro</span>
+      </div>
+
+      <ul class="nav-links">
+        <li class="active">Dashboard</li>
+        <li>
+          <button id="enable-notifications" class="notif-btn">Enable 1-min Alerts</button>
+        </li>
+        <li>
+          <button id="toggle-theme" class="theme-btn">Toggle Dark Mode</button>
+        </li>
+      </ul>
+
+      <div class="quote-box">
+        <p id="daily-quote">Small steps, big change.</p>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="welcome-text">
+          <h1>Habit overview</h1>
+          <p id="current-date"></p>
+        </div>
+        <div class="actions">
+          <button class="primary-btn" id="open-modal">+ New habit</button>
+        </div>
+      </header>
+
+      <!-- Stats overview -->
+      <section class="mini-stats">
+        <div class="mini-box gradient">
+          <span class="label">Today</span>
+          <span class="value" id="today-count">0</span>
+        </div>
+        <div class="mini-box glass">
+          <span class="label">Best streak</span>
+          <span class="value" id="best-streak">0</span>
+        </div>
+        <div class="mini-box glass">
+          <span class="label">Total habits</span>
+          <span class="value" id="total-habits">0</span>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <div class="content-grid">
+        <!-- Habits -->
+        <section class="habits-section">
+          <div id="habit-grid" class="habit-grid"></div>
+        </section>
+
+        <!-- Analytics -->
+        <aside class="stats-section">
+          <div class="stats-card glass">
+            <h3>Weekly completion</h3>
+            <div class="chart-wrapper">
+              <canvas id="analyticsChart"></canvas>
+            </div>
+          </div>
+
+          <div class="stats-card glass">
+            <h3>Streak growth</h3>
+            <div class="chart-wrapper">
+              <canvas id="streakLineChart"></canvas>
+            </div>
+          </div>
+
+          <div class="stats-card glass">
+            <h3>Completion ratio</h3>
+            <div class="chart-wrapper">
+              <canvas id="completionPieChart"></canvas>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <h2>Track new habit</h2>
+
+      <div class="input-group">
+        <span class="input-icon">📝</span>
+        <input type="text" id="habit-input" placeholder="Enter habit name..."/>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <span class="input-icon">🏷️</span>
+          <select id="habit-category">
+            <option value="Health">Health</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Learning">Learning</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <span class="input-icon">🎨</span>
+          <input type="color" id="habit-color" value="#4f46e5"/>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="secondary-btn" id="close-modal">Cancel</button>
+        <button class="primary-btn" id="save-habit">Save habit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
